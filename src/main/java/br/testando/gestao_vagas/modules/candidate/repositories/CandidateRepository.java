@@ -1,4 +1,4 @@
-package br.testando.gestao_vagas.modules.candidate;
+package br.testando.gestao_vagas.modules.candidate.repositories;
 
 import br.testando.gestao_vagas.modules.candidate.entities.CandidateEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,6 +1,7 @@
-package br.testando.gestao_vagas.modules.company.entity;
+package br.testando.gestao_vagas.modules.company.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
@@ -13,25 +14,23 @@ public class JobEntites {
 private UUID id;
 private String description;
 private String benefits;
+@NotBlank(message = "Esse campo é obrigatório")
 private String level;
 @ManyToOne()
-@JoinColumn(name="company_id", insertable = false, updatable = false)
+@JoinColumn(name="company_id")
 private CompanyEntity companyEntity;
-@JoinColumn(name = "company_id")
-private UUID companyId;
 @CreationTimestamp
     private LocalDateTime createdAt;
 
 public JobEntites(){
 }
 
-    public JobEntites(UUID id, String description, String benefits, String level, CompanyEntity companyEntity, UUID companyId) {
+    public JobEntites(UUID id, String description, String benefits, String level, CompanyEntity companyEntity) {
         this.id = id;
         this.description = description;
         this.benefits = benefits;
         this.level = level;
         this.companyEntity = companyEntity;
-        this.companyId = companyId;
     }
 
     public UUID getId() {
@@ -72,14 +71,6 @@ public JobEntites(){
 
     public void setCompanyEntity(CompanyEntity companyEntity) {
         this.companyEntity = companyEntity;
-    }
-
-    public UUID getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(UUID companyId) {
-        this.companyId = companyId;
     }
 
     public LocalDateTime getCreatedAt() {

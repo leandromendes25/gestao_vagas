@@ -1,4 +1,4 @@
-package br.testando.gestao_vagas.modules.company.entity;
+package br.testando.gestao_vagas.modules.company.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
