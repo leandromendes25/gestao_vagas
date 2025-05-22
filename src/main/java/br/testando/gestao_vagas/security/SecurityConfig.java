@@ -14,15 +14,13 @@ public class SecurityConfig {
     @Autowired
     private SecurityFilter securityFilter;
 
-    @Bean //Nesse caso do Spring security
-    //csrf -> vulnerabilidade de segurança, para podermos desabilitar, nos permite fazer nossas proprias conf
+    @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> {
             auth.requestMatchers("/candidate/").permitAll()
                             .requestMatchers("/company/").permitAll()
                             .requestMatchers("/auth/company").permitAll();
             auth.anyRequest().authenticated();
-            //addFilter precisa passar uma classe de filtro, como ela é basica.
         }).addFilterBefore(securityFilter, BasicAuthenticationFilter.class);
         return http.build();
     }

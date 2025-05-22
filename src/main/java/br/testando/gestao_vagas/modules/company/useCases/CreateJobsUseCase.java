@@ -1,6 +1,6 @@
 package br.testando.gestao_vagas.modules.company.useCases;
 
-import br.testando.gestao_vagas.modules.company.entities.JobEntites;
+import br.testando.gestao_vagas.modules.company.entities.JobEntity;
 import br.testando.gestao_vagas.modules.company.repositories.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ public class CreateJobsUseCase {
     private JobRepository repository;
 
 
-    public JobEntites execute(JobEntites jobEntites){
-    return repository.save(jobEntites);
+    public JobEntity execute(JobEntity jobEntity){
+    return repository.save(jobEntity);
     }
 }

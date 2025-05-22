@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity(name = "job")
-public class JobEntites {
+public class JobEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
 private UUID id;
@@ -22,10 +22,10 @@ private CompanyEntity companyEntity;
 @CreationTimestamp
     private LocalDateTime createdAt;
 
-public JobEntites(){
+public JobEntity(){
 }
 
-    public JobEntites(UUID id, String description, String benefits, String level, CompanyEntity companyEntity) {
+    public JobEntity(UUID id, String description, String benefits, String level, CompanyEntity companyEntity) {
         this.id = id;
         this.description = description;
         this.benefits = benefits;
