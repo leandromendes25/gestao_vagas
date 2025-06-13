@@ -5,6 +5,11 @@ public class CreateJobDto {
     private String benefits;
     private String level;
 
+    
+
+    public CreateJobDto() {
+    }
+
     public String getDescription() {
         return description;
     }
