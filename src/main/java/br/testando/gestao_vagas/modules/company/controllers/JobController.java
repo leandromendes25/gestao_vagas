@@ -23,9 +23,10 @@ public class JobController {
     @PostMapping("/")
     public JobEntity create(@Valid @RequestBody CreateJobDto createJobDto, HttpServletRequest request) {
         var companyId = request.getAttribute("company_id");// Pode ser objeto e o setId só aceita UUID
-        JobEntity.builder().benefits(createJobDto.getBenefits())
-                .companyEntity(companyId)
-                .description(createJobDto.getDescription()).level(createJobDto.getLevel()).build();
+       var job = JobEntity.builder().benefits(createJobDto.getBenefits())
+                .companyId(UUID.fromString(companyId.toString()))
+                .description(createJobDto.getDescription())
+                .level(createJobDto.getLevel()).build();
         return createJobsUseCase.execute(job);
     }
 }

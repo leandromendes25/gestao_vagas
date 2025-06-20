@@ -19,8 +19,10 @@ public class JobEntity {
     private String level;
 
     @ManyToOne()
-    @JoinColumn(name = "company_id")
+    @JoinColumn(name = "company_id", insertable = false, updatable = false)
     private CompanyEntity companyEntity;
+    @Column(name = "company_id")
+    private UUID companyId;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -28,12 +30,14 @@ public class JobEntity {
     public JobEntity() {
     }
 
-    public JobEntity(UUID id, String description, String benefits, String level, CompanyEntity companyEntity) {
+    public JobEntity(UUID id, String description, String benefits, String level, CompanyEntity companyEntity, UUID companyId, LocalDateTime createdAt) {
         this.id = id;
         this.description = description;
         this.benefits = benefits;
         this.level = level;
         this.companyEntity = companyEntity;
+        this.companyId = companyId;
+        this.createdAt = createdAt;
     }
 
     public UUID getId() {
@@ -82,5 +86,13 @@ public class JobEntity {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public UUID getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(UUID companyId) {
+        this.companyId = companyId;
     }
 }
